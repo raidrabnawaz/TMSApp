@@ -1,0 +1,37 @@
+﻿@model TMSApp.Models.HomeOverviewViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h3 class="display-4">Welcome</h3>
+    <div class="overview-section">
+        <h3>Total Vehicles: @Model.TotalVehicles</h3>
+    </div>
+    <hr />
+    <div class="overview-section">
+        <h1>Recent Maintenance Activities</h1>
+        <ul>
+            @foreach (var record in Model.RecentMaintenanceRecords)
+            {
+                <li>
+                    <strong>@record.Date.ToString("yyyy-MM-dd")</strong> -
+                    @record.ActivityType for @record.Vehicle.LicensePlate
+                </li>
+            }
+        </ul>
+    </div>
+    <hr />
+    <div class="overview-section">
+        <h1>Upcoming Maintenance Activities</h1>
+        <ul>
+            @foreach (var record in Model.UpcomingMaintenanceRecords)
+            {
+                <li>
+                    <strong>@record.Date.ToString("yyyy-MM-dd")</strong> -
+                    @record.ActivityType for @record.Vehicle.LicensePlate
+                </li>
+            }
+        </ul>
+    </div>
+</div>
